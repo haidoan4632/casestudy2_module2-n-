@@ -8,6 +8,7 @@ public class Employee extends Person{
 
     public Employee() {
     }
+
     public Employee(String name, String dateOfBirth, String gender, String idCard, String phoneNumber, String email, String employeeCode, String degree, String position, String salary) {
         super(name, dateOfBirth, gender, idCard, phoneNumber, email);
         this.employeeCode = employeeCode;
@@ -50,11 +51,11 @@ public class Employee extends Person{
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "employeeCode='" + employeeCode + '\'' +
-                ", degree='" + degree + '\'' +
-                ", position='" + position + '\'' +
-                ", salary='" + salary + '\'' +
-                "} " + super.toString();
+        return
+                "Employee{" + super.toString() +
+                        "employeeCode='" + employeeCode + '\'' +
+                        ", degree='" + degree + '\'' +
+                        ", position='" + position + '\'' +
+                        ", salary='" + salary + "}";
     }
 }
