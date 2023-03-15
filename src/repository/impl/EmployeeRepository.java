@@ -16,12 +16,18 @@ public class EmployeeRepository implements IEmployeeRepository {
 
 
     public List<Employee> getALl() {
+
         List<String> stringList = ReadFile.read("src\\data\\employee.csv");
         List<Employee> employeeList = new ArrayList<>();
         for (String str : stringList) {
             String[] temp = str.split(",");
-            Employee employee = new Employee(temp[0], temp[1], temp[2], temp[3], temp[4], temp[5], temp[6], temp[7], temp[8], temp[9]);
-            employeeList.add(employee);
+            if (temp.length == 10){
+                Employee employee = new Employee(temp[0], temp[1], temp[2], temp[3], temp[4], temp[5], temp[6], temp[7], temp[8], temp[9]);
+                employeeList.add(employee);
+            }
+            else {
+                System.out.println("Mảng này có vấn đề nè, kiểm tra lại file csv, có khi ghi thiếu phần tử á ");
+            }
         }
         return employeeList;
     }
@@ -58,7 +64,9 @@ public class EmployeeRepository implements IEmployeeRepository {
     }
 
     private static String toCSV(Employee employee) {
-        return employee.getName() + "," + employee.getDateOfBirth() + "," + employee.getGender() + "," + employee.getIdCard() + "," + employee.getPhoneNumber() + "," + employee.getEmail() + "," + employee.getEmployeeCode() + "," + employee.getDegree() + "," + employee.getPosition() + "," + employee.getSalary();
+        return employee.getName() + "," + employee.getDateOfBirth() + "," + employee.getGender() + "," + employee.getIdCard()
+                + "," + employee.getPhoneNumber() + "," + employee.getEmail() + "," + employee.getEmployeeCode() + ","
+                + employee.getDegree() + "," + employee.getPosition() + "," + employee.getSalary();
     }
 
 
